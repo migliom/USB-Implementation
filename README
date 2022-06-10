@@ -1,0 +1,68 @@
+A guide to the project files for the cooperative design lab in ECE33700.
+
+Team members contributing to this project were:
+Justin Lee
+Matteo Miglio
+Ansh Patel
+
+All files for this project can be found in
+~mg97/ECE337Lab12
+
+
+README - A copy of the README file in the home directory in mg97
+
+CooperativeDesignLab_Table_of_Contents.txt - Cooperative Design Lab text file description indicating which account has the final submission folder
+
+'Presentation Plan.pdf' - Presentation Plan shown to TA's during Presentation
+
+makefile - Makefile used for the project
+
+mapped_wave.do - .do file that formats waves for mapped version. Used during presentation
+
+wave.do - .do file that formats waves for source version. Used primarily during testing and design
+
+reports/
+	usb_endpoint.log - Synthesis log for mapped top level
+	usb_endpoint.rep - Report file for synthesis of mapped top level
+
+source/
+	usb_endpoint.sv - Top level RTL file for entire design
+	usb_tx.sv - Top level RTL file for TX module
+	usb_rx.sv - Top level RTL file for RX module
+	ahb_slave.sv - Top level RTL file for AHB-lite slave interface module
+	fifo_data_buffer.sv - RTL file for FIFO data buffer
+	
+	tb_usb_endpoint.sv - Testbench for usb_endpoint (entire design)
+	tb_usb_tx.sv - Testbench for usb_tx module
+	tb_usb_rx.sv - Testbench for usb_rx module
+	tb_ahb_slave.sv - Testbench for AHB-lite slave interface module
+	tb_fifo_data_buffer.sv - Testbench for FIFO data buffer
+	tb_flex_counter_tx.sv - Testbench for flex counter module used in TX module
+
+	falling_edge_detect.sv - Module that detects falling edge
+	rising_edge_detector.sv - Module that detects rising edge
+
+	flex_counter_tx.sv - Flex Counter used in TX module
+	flex_pts_sr_tx.sv - Flex parallel to serial shift register used in TX module
+	tx_control_fsm.sv - FSM module for TX module
+	tx_encoder.sv - Module that outputs NRZI encoded signals for TX module
+	tx_mux.sv - Module that controls inputs to pts shift register for TX module
+	tx_pid_byte.sv - Module that controls what PID byte to output for TX module
+	tx_shift_register.sv - Shift Register used in TX module
+	tx_sync_byte.sv - Module that defines what sync byte to use for TX module
+	tx_timer.sv - Timing module used for TX module
+	
+	rx_decoder.sv - Decoder module for RX module
+	rx_edge_detector.sv - Edge detector used in RX module
+	rx_eop_detector.sv - EOP detector used in RX module
+	rx_flex_counter.sv - Flex counter used in RX module
+	rx_flex_stp_sr.sv - Flex serial to parallel shift register used in RX module
+	rx_rcu.sv - Receiver control module used in RX module
+	rx_sync_high.sv - Synchronizer (default high) used in RX module
+	rx_sync_low.sv - Synchronizer (default low) used in RX module
+	rx_timer.sv - Timer module used in RX module
+	
+mapped/
+    usb_endpoint.v - Synthesized usb_endpoint module (entire design)
+
+mapped_work/ - folder containing mapped work while synthesizing usb_endpoint module (entire design)

@@ -1,0 +1,178 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : usb_endpoint
+Version: K-2015.06-SP1
+Date   : Thu Apr 28 11:25:12 2022
+****************************************
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+  Startpoint: SLAVE/write_data_state_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: FIFO_BUFFER/registers_reg[56][0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  SLAVE/write_data_state_reg[0]/CLK (DFFSR)               0.00       0.00 r
+  SLAVE/write_data_state_reg[0]/Q (DFFSR)                 0.67       0.67 f
+  SLAVE/U512/Y (INVX2)                                    0.21       0.88 r
+  SLAVE/U1081/Y (NAND3X1)                                 0.16       1.05 f
+  SLAVE/U84/Y (INVX2)                                     0.34       1.39 r
+  SLAVE/U1079/Y (NOR2X1)                                  0.24       1.63 f
+  SLAVE/U1078/Y (NAND3X1)                                 0.74       2.37 r
+  SLAVE/store_tx_data (ahb_slave)                         0.00       2.37 r
+  FIFO_BUFFER/store_tx_data (fifo_data_buffer)            0.00       2.37 r
+  FIFO_BUFFER/U1804/Y (NOR2X1)                            0.24       2.60 f
+  FIFO_BUFFER/U549/Y (BUFX2)                              0.47       3.07 f
+  FIFO_BUFFER/U1803/Y (NOR2X1)                            0.11       3.18 r
+  FIFO_BUFFER/U548/Y (BUFX2)                              0.43       3.60 r
+  FIFO_BUFFER/U547/Y (INVX2)                              0.38       3.98 f
+  FIFO_BUFFER/U1769/Y (NAND2X1)                           0.60       4.58 r
+  FIFO_BUFFER/U2577/Y (INVX2)                             0.37       4.94 f
+  FIFO_BUFFER/U780/Y (NAND3X1)                            0.65       5.59 r
+  FIFO_BUFFER/U779/Y (OAI21X1)                            0.14       5.74 f
+  FIFO_BUFFER/U1905/Y (INVX2)                             0.48       6.22 r
+  FIFO_BUFFER/U778/Y (NAND2X1)                            0.07       6.29 f
+  FIFO_BUFFER/U777/Y (OAI21X1)                            0.12       6.41 r
+  FIFO_BUFFER/registers_reg[56][0]/D (DFFSR)              0.00       6.41 r
+  data arrival time                                                  6.41
+
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  FIFO_BUFFER/registers_reg[56][0]/CLK (DFFSR)            0.00      10.00 r
+  library setup time                                     -0.24       9.76
+  data required time                                                 9.76
+  --------------------------------------------------------------------------
+  data required time                                                 9.76
+  data arrival time                                                 -6.41
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.34
+
+
+1
+ 
+****************************************
+Report : area
+Design : usb_endpoint
+Version: K-2015.06-SP1
+Date   : Thu Apr 28 11:25:13 2022
+****************************************
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+Number of ports:                          669
+Number of nets:                          5909
+Number of cells:                         5309
+Number of combinational cells:           3819
+Number of sequential cells:              1458
+Number of macros/black boxes:               0
+Number of buf/inv:                        685
+Number of references:                       4
+
+Combinational area:             920907.000000
+Buf/Inv area:                   111744.000000
+Noncombinational area:         1143648.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:               2064555.000000
+Total area:                 undefined
+1
+Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : usb_endpoint
+Version: K-2015.06-SP1
+Date   : Thu Apr 28 11:25:14 2022
+****************************************
+
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 5    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+usb_endpoint                              7.852  151.824  644.971  159.676 100.0
+  RX_USB (usb_rx)                         0.768   10.706   50.447   11.473   7.2
+    state (rx_rcu)                        0.247    1.486   12.402    1.734   1.1
+    eop_detec (rx_eop_detector)        2.01e-02 2.56e-02    0.297 4.57e-02   0.0
+    shift_register (rx_flex_stp_sr_NUM_BITS8_SHIFT_MSB0)
+                                       5.90e-02    1.685    5.379    1.744   1.1
+    tim (rx_timer)                        0.358    4.190   22.244    4.547   2.8
+      six_four_byte_count (rx_flex_counter_NUM_CNT_BITS7)
+                                       2.69e-02    1.645   10.084    1.672   1.0
+        r302 (rx_flex_counter_NUM_CNT_BITS7_DW01_inc_0)
+                                          0.000    0.000    1.541 1.54e-06   0.0
+      rise (rising_edge_detector)      3.38e-03    0.236    0.615    0.239   0.1
+      nine_bit_count (rx_flex_counter_NUM_CNT_BITS4_0)
+                                       4.94e-02    1.066    5.646    1.116   0.7
+      ten_bit_count (rx_flex_counter_NUM_CNT_BITS4_1)
+                                          0.139    1.224    5.646    1.362   0.9
+    dec (rx_decoder)                   2.55e-02    0.464    1.972    0.490   0.3
+    EDG (rx_edge_detector)             2.57e-02    0.255    0.713    0.281   0.2
+    sync_l (rx_sync_low)               8.39e-03    0.468    1.066    0.476   0.3
+    sync_h (rx_sync_high)              2.32e-02    0.472    1.066    0.495   0.3
+  TX_USB (usb_tx)                      9.27e-02    6.189   39.498    6.281   3.9
+    TX_MUX (tx_mux)                       0.000    0.000    1.992 1.99e-06   0.0
+    TX_SYNC_BYTE (tx_sync_byte)           0.000    0.000    0.000    0.000   0.0
+    TX_PID_BYTE (tx_pid_byte)             0.000    0.000    0.123 1.23e-07   0.0
+    TX_SHIFT_REGISTER (tx_shift_register)
+                                       4.39e-02    1.670    6.181    1.714   1.1
+      pts_shift_reg (flex_pts_sr_tx_NUM_BITS8_SHIFT_MSB0)
+                                       4.39e-02    1.670    6.075    1.714   1.1
+    TX_ENCODER (tx_encoder)            1.86e-04    1.027    5.456    1.027   0.6
+    TX_TIMER (tx_timer)                4.72e-02    2.671   18.742    2.718   1.7
+      byte_complete_tracker (flex_counter_tx_7)
+                                       4.72e-02    1.647   11.659    1.694   1.1
+        r306 (flex_counter_tx_7_DW01_inc_0)
+                                          0.000    0.000    1.541 1.54e-06   0.0
+      bit_period_tracker (flex_counter_tx)
+                                          0.000    1.024    6.463    1.024   0.6
+    TX_CONTROL_FSM (tx_control_fsm)    1.48e-03    0.821    7.004    0.823   0.5
+  FIFO_BUFFER (fifo_data_buffer)          3.223  109.786  424.542  113.010  70.8
+    add_53 (fifo_data_buffer_DW01_inc_2)
+                                       1.86e-03 4.10e-03    1.510 5.96e-03   0.0
+    add_126 (fifo_data_buffer_DW01_inc_1)
+                                       5.45e-04 1.46e-03    1.541 2.01e-03   0.0
+    add_146 (fifo_data_buffer_DW01_inc_0)
+                                       5.62e-04 1.64e-03    1.541 2.20e-03   0.0
+  SLAVE (ahb_slave)                       3.768   25.142  130.489   28.911  18.1
+    falling_edge_detect_tx_transfer_active (falling_edge_detect)
+                                       1.52e-02    0.237    0.615    0.252   0.2
+1
